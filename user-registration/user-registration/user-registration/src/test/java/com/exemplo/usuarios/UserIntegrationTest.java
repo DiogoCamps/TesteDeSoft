@@ -9,5 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserIntegrationTest {
 
+    @Test
+    void testRegistroUsuario() {
+        UserRepository repository = new UserRepository();
+        UserService service = new UserService(repository);
+
+        service.registerUser("1", "Jessica");
+        User user = service.getUser("1");
+
+        assertNotNull(user);
+        assertEquals("Jessica",user.getName());
+    }
 
 }
